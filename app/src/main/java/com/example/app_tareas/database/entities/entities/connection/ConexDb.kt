@@ -6,7 +6,7 @@ import androidx.room.Room
 class ConexDb {
     companion object {
         @Volatile
-        Private var instanceDb: AppDatabase? = null
+        private var instanceDb: AppDatabase? = null
 
         fun getDatabase(context: Context): AppDatabase {
             if (this.instanceDb == null) {
