@@ -2,14 +2,16 @@ package com.example.app_tareas.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.app_tareas.database.dao.TaskDao
-import com.example.app_tareas.database.entities.Task
+import androidx.room.TypeConverters
+import com.example.app.lareas.database.dao.TareaDao
+import com.example.app_tareas.database.converters.Converters
+import com.example.app_tareas.database.entities.Tarea
 
-@Database(entities = [Task::class], version = 1)
+@Database(
+    entities = [Tarea::class],
+    version = 1
+)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun taskDao(): TaskDao
-
-    companion object {
-        const val DATABASE_NAME = "tasks_db"
-    }
+    abstract fun tareaDao(): TareaDao
 }
