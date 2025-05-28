@@ -2,6 +2,7 @@ package com.example.app_tareas.database.entities.entities.connection
 
 import android.content.Context
 import androidx.room.Room
+import com. example. app_tareas. database. AppDatabase
 
 class ConexDb {
     companion object {
