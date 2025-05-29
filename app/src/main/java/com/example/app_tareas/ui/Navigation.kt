@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.app_tareas.ui.screens.AddTaskScreen
 import com.example.app_tareas.ui.screens.TaskListScreen
 import com.example.app_tareas.ui.viewmodels.TaskViewModel
 
@@ -16,8 +17,16 @@ fun AppNavigation(viewModel: TaskViewModel) {
         startDestination = "taskList"
     ) {
         composable("taskList") {
-            TaskListScreen(viewModel = viewModel, navController = navController)
+            TaskListScreen(
+                viewModel = viewModel,
+                navController = navController
+            )
         }
-        // Agrega más pantallas aquí
+        composable("addTask") {
+            AddTaskScreen(
+                viewModel = viewModel,
+                navController = navController
+            )
+        }
     }
 }

@@ -1,12 +1,23 @@
 package com.example.app_tareas.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.app_tareas.data.database.TaskDao
 import com.example.app_tareas.data.entities.Task
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.util.Date
+
+class TaskViewModelFactory(private val taskDao: TaskDao) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return TaskViewModel(taskDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
 
 class TaskViewModel(private val taskDao: TaskDao) : ViewModel() {
     val allTasks: Flow<List<Task>> = taskDao.getAllTasks()

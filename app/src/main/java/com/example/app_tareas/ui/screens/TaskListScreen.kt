@@ -8,11 +8,14 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.app_tareas.data.entities.Task
 import com.example.app_tareas.ui.components.TaskItem
 import com.example.app_tareas.ui.viewmodels.TaskViewModel
+import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -20,54 +23,22 @@ fun TaskListScreen(
     viewModel: TaskViewModel,
     navController: NavController
 ) {
-    val tasks by viewModel.pendingTasks.collectAsState(initial = emptyList())
-    var searchQuery by remember { mutableStateOf("") }
-    var active by remember { mutableStateOf(false) }
-
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Mis Tareas") },
-                actions = {
-                    IconButton(onClick = { active = !active }) {
-                        Icon(Icons.Default.Search, contentDescription = "Buscar")
-                    }
-                }
-            )
-        },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /* Navegar a pantalla de creación */ }) {
-                Icon(Icons.Default.Add, contentDescription = "Añadir tarea")
+            FloatingActionButton(
+                onClick = { navController.navigate("addTask") }
+            ) {
+                Text("+") // Texto simple para prueba
             }
         }
     ) { padding ->
-        Column(
+        Box(
             modifier = Modifier
                 .padding(padding)
-                .fillMaxSize()
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            SearchBar(
-                query = searchQuery,
-                onQueryChange = { newQuery -> searchQuery = newQuery },
-                onSearch = { /* Puedes implementar lógica adicional al realizar la búsqueda */ },
-                active = active,
-                onActiveChange = { active = it },
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Buscar tareas...") },
-                leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) }
-            ) {
-                // Contenido de resultados de búsqueda si lo necesitas
-            }
-
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(tasks) { task ->
-                    TaskItem(
-                        task = task,
-                        onTaskClick = { /* Navegar a detalles */ },
-                        onCompleteTask = { viewModel.completeTask(task) }
-                    )
-                }
-            }
+            Text("Pantalla principal visible")
         }
     }
 }
