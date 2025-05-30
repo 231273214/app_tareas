@@ -26,7 +26,7 @@ fun AddTaskScreen(
 ) {
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
-    var selectedPriority by remember { mutableStateOf(Task.Priority.IMPORTANT) }
+    var selectedPriority by remember { mutableStateOf(Task.Priority.IMPORTANTE) }
     var group by remember { mutableStateOf("") }
     var dueDate by remember { mutableStateOf(Date()) }
 

@@ -19,6 +19,6 @@ data class Task(
     val isCompleted: Boolean = false
 ) {
     enum class Priority {
-        URGENT, IMPORTANT, SHOULD_DO, NOT_IMPORTANT
+        URGENTE, IMPORTANTE, POR_HACER, IRRELEVANTE
     }
 }

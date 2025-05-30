@@ -29,4 +29,19 @@ interface TaskDao {
 
     @Query("SELECT * FROM tasks WHERE title LIKE :query OR description LIKE :query OR task_group LIKE :query")
     fun searchTasks(query: String): Flow<List<Task>>
+
+    @Query("DELETE FROM tasks")
+    suspend fun deleteAllTasks()
+
+    @Query("SELECT * FROM tasks WHERE title = :title LIMIT 1")
+    suspend fun getTaskByTitle(title: String): Task?
+
+    @Query("DELETE FROM tasks WHERE isCompleted = 1")
+    suspend fun deleteCompletedTasks()
+
+    @Query("SELECT * FROM tasks WHERE id = :taskId")
+    fun getTaskById(taskId: Int): Flow<Task?>
+
+
+
 }

@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                     Task(
                         title = "Primera tarea",
                         description = "Completar el proyecto",
-                        priority = Task.Priority.URGENT,
+                        priority = Task.Priority.URGENTE,
                         group = "Trabajo",
                         creationDate = Date(),
                         dueDate = Date(System.currentTimeMillis() + 86400000), // Mañana
@@ -53,10 +53,13 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+
+
         setContent {
             App_TareasTheme {
                 // Añadir Surface con color de fondo
                 Surface(
+
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
