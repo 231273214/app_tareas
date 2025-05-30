@@ -39,25 +39,25 @@ fun EditTaskScreen(
     }
 
     // Mostrar diálogo de error si es necesario
-    if (errorMessage != null) {
-        AlertDialog(
-            onDismissRequest = {
-                errorMessage = null
-                navController.popBackStack()
-            },
-            title = { Text("Error") },
-            text = { Text(errorMessage!!) },
-            confirmButton = {
-                TextButton(onClick = {
-                    errorMessage = null
-                    navController.popBackStack()
-                }) {
-                    Text("OK")
-                }
-            }
-        )
-        return
-    }
+//    if (errorMessage != null) {
+//        AlertDialog(
+//            onDismissRequest = {
+//                errorMessage = null
+//                navController.popBackStack()
+//            },
+//            title = { Text("Error") },
+//            text = { Text(errorMessage!!) },
+//            confirmButton = {
+//                TextButton(onClick = {
+//                    errorMessage = null
+//                    navController.popBackStack()
+//                }) {
+//                    Text("OK")
+//                }
+//            }
+//        )
+//        return
+//    }
 
     // Si la tarea aún no se ha cargado
     if (task == null) {
